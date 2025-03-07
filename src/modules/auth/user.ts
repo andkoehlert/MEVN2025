@@ -17,7 +17,7 @@ export const useUsers = () => {
 
 const fetchToken = async (email: string, password: string): Promise<void> => {
 try {
-  const response = await fetch('https://mevn2025.onrender.com/api/user/login', {
+  const response = await fetch('https://mongo-api-2025.onrender.com/api/user/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const logout = () => {
 const registerUser = async (name: string, email:string, password:string): Promise<void> => {
 
   try {
-    const response = await fetch('https://mevn2025.onrender.com/api/user/register', {
+    const response = await fetch('https://mongo-api-2025.onrender.com/api/user/register', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

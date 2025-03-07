@@ -74,7 +74,7 @@ const setDefaultValues = (proDuck: newProDuck, userId: string) => {
     validateProDuck(proDuck)
     const productWithDefaults = setDefaultValues(proDuck, userId)
 
-      const response = await fetch('http://localhost:4000/api/products/', {
+      const response = await fetch('https://mongo-api-2025.onrender.com/api/products/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ const setDefaultValues = (proDuck: newProDuck, userId: string) => {
 
 
   const deletedProDuckFromServer = async (id: string, token: string): Promise<void> => {
-    const response = await fetch(`http://localhost:4000/api/products/${id}`, {
+    const response = await fetch(`https://mongo-api-2025.onrender.com/api/products/${id}`, {
       method: 'DELETE',
       headers: {
         'auth-token': token
