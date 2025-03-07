@@ -13,7 +13,7 @@ export const useProDucks = () => {
   const fecthProDucks = async (): Promise<void> => {
     loading.value = true;
     try {
-const response = await fetch('http://localhost:4000/api/products')
+const response = await fetch('https://mongo-api-2025.onrender.com/api/products')
 if (!response.ok) {
   throw new Error('No data available')
 }
