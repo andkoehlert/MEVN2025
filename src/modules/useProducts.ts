@@ -1,16 +1,16 @@
 import {ref} from 'vue';
-import type {newProduct, Product} from '../interfaces/interfaces'
+import type {newProDuck, ProDuck} from '../interfaces/interfaces'
 
 
 
 
-export const useProducts = () => {
+export const useProDucks = () => {
   const error = ref<string | null>(null);
   const loading = ref<boolean>(false);
-  const products = ref<Product[]>([]);
+  const products = ref<ProDuck[]>([]);
 
 
-  const fecthProducts = async (): Promise<void> => {
+  const fecthProDucks = async (): Promise<void> => {
     loading.value = true;
     try {
 const response = await fetch('http://localhost:4000/api/products')
@@ -18,7 +18,7 @@ if (!response.ok) {
   throw new Error('No data available')
 }
 
-const data: Product[] = await response.json()
+const data: ProDuck[] = await response.json()
 
 products.value = data
 console.log("products fetched", products.value)
@@ -45,32 +45,34 @@ console.log("products fetched", products.value)
   }
 
 
-const validateProdcut = (product: newProduct):void => {
-if (!product.name) {
+const validateProDuck = (proDuck: newProDuck):void => {
+if (!proDuck.name) {
   throw new Error ('please provide a product name')
 }
 }
 
-const setDefaultValues = (product: newProduct, userId: string) => {
+const setDefaultValues = (proDuck: newProDuck, userId: string) => {
   return {
-    name: product.name,
-    description: product.description || 'New product description default value',
-    imageURL: product.imageURL || 'https://picsum.photos/500/500',
-    price: product.price || 2,
-    stock: product.stock || 45,
-    isOnDiscount: product.isOnDiscount || false,
-    discountPct: product.discountPct || 0,
-    isHidden: product.isHidden || false,
+    name: proDuck.name,
+    agent: proDuck.agent || 'Unknown',
+    description: proDuck.description || 'New product description default value',
+    imageURL: proDuck.imageURL || 'https://random-d.uk/api/v2/randomimg',
+    age: proDuck.age || 2,
+    birthday: proDuck.birthday || 45,
+    species: proDuck.species || 'Unknown',
+    friendly: proDuck.friendly || true,
+    hostile: proDuck.hostile || false,
+    isHidden: proDuck.isHidden || false,
     _createdBy: userId
   }
 }
 
 
-  const addProduct = async (product: newProduct): Promise<void> => {
+  const addProDuck = async (proDuck: newProDuck): Promise<void> => {
     try {
     const {token, userId} = getTokenAndUserId()
-    validateProdcut(product)
-    const productWithDefaults = setDefaultValues(product, userId)
+    validateProDuck(proDuck)
+    const productWithDefaults = setDefaultValues(proDuck, userId)
 
       const response = await fetch('http://localhost:4000/api/products/', {
         method: 'POST',
@@ -85,7 +87,7 @@ const setDefaultValues = (product: newProduct, userId: string) => {
         throw new Error('No data available')
       }
 
-      const newProduct: Product = await response.json()
+      const newProduct: ProDuck = await response.json()
       products.value.push(newProduct)
       console.log("prodcuts added", newProduct)
 
@@ -96,7 +98,7 @@ const setDefaultValues = (product: newProduct, userId: string) => {
   } 
 
 
-  const deletedProductFromServer = async (id: string, token: string): Promise<void> => {
+  const deletedProDuckFromServer = async (id: string, token: string): Promise<void> => {
     const response = await fetch(`http://localhost:4000/api/products/${id}`, {
       method: 'DELETE',
       headers: {
@@ -110,20 +112,20 @@ console.log('product not deleted')
   }
   }
 
-  const removeProductFromState = (id:String): void => {
+  const removeProDuckFromState = (id:String): void => {
     products.value = products.value.filter(product => product._id !== id)
     console.log("product deleted", id)
   }
 
   
 
-  const deleteProduct = async (id: string): Promise<void> => {
+  const deleteProDuck = async (id: string): Promise<void> => {
     try {
       
      
       const { token } = getTokenAndUserId()
-      await deletedProductFromServer(id, token)
-      removeProductFromState(id)
+      await deletedProDuckFromServer(id, token)
+      removeProDuckFromState(id)
       
       console.log("id test", id)
       
@@ -136,5 +138,5 @@ console.log('product not deleted')
   }
 
 
-  return {error, loading, products, fecthProducts, deleteProduct, addProduct, getTokenAndUserId}
+  return {error, loading, products, fecthProDucks, deleteProDuck, addProDuck, getTokenAndUserId}
 }

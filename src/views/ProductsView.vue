@@ -11,11 +11,14 @@
         <img  :src="product.imageURL" alt="Product Image" class="w-full h-48 object-cover mb-4 rounded-lg">      <!-- Product image -->
           <h3 class="text-lg text-gray-700 font-semibold mb-2"> {{ product.name }} </h3>                  <!-- Product name -->
           <p class="text-gray-700"> {{ product.description }}  </p>                                               <!-- Product description -->
-          <p class="text-blue-500 font-bold mt-2"> {{ product.price }} </p>                                <!-- Product price -->
+          <p class="text-gray-700 font-bold mt-2"><strong>Age:</strong> {{ product.age }} </p>                                <!-- Product price -->
           <div class="flex justify-between mt-4">
-            <button class="bg-blue-500 text-white px-1 py-2 rounded hover:bg-blue-600">Product Details</button>
-            <button class="bg-green-500 text-white px-1 py-2 rounded hover:bg-green-600">Add to Cart</button> <!-- Add to cart button -->
-          </div>
+            <p class="text-gray-700 font-bold mt-2"><strong>Species:</strong> {{ product.species }} </p>                                <!-- Product price -->
+            <p class="text-gray-700 font-bold mt-2">
+  <strong>Status:</strong> 
+  <span v-if="product.hostile" class="text-red-500 font-bold"> Hostile</span>
+  <span v-else class="text-green-500 font-bold"> Friendly</span>
+</p>          </div>
         </div> 
       </div>
 
@@ -25,13 +28,13 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useProducts } from '../modules/useProducts';
+import { useProDucks } from '../modules/useProducts';
 
 
-const {loading, error, products, fecthProducts} = useProducts();
+const {loading, error, products, fecthProDucks} = useProDucks();
 
 onMounted(() => {
-  fecthProducts();
+  fecthProDucks();
 })
 
 </script>

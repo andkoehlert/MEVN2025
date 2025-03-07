@@ -1,18 +1,20 @@
-export type Product = {
+export type ProDuck = {
   
   _id: string;
   name: string;
+  agent: string;
   description: string;
   imageURL: string;
-  price: number;
-  stock: number;
-  isOnDiscount: boolean;
-  discountPct: number;
+  age: number;
+  birthday: number;
+  species: string;
+  friendly: boolean;
+  hostile: boolean;
   isHidden: boolean;
   _createdBy: string,
 }
 
-export type newProduct = Omit<Product, '_id'> & {
+export type newProDuck = Omit<ProDuck, '_id'> & {
 _createdBy?: string
 }
 
