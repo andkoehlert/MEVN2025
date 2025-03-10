@@ -18,10 +18,9 @@
             <span class="uppercase font-bold">Ducks age: </span>
             <input type="text" v-model="newProduct.age"   placeholder="Age" class=" pl-2 " /> <!-- Product price -->
           </div>
-          <div class="p-2 border rounded"> 
-
-            <span class="uppercase font-bold">Ducks birthday: </span>
-            <input type="text" v-model="newProduct.birthday"  placeholder="Birhday" class=" pl-2 " />  <!-- Product stock -->
+          <div class="p-2 border rounded flex items-center ">
+            <span class="uppercase font-bold pr-2 text-green-500">not Wanted: </span> <input type="checkbox" v-model="newProduct.notWanted"  class="p-2 border rounded w-6 h-6 mr-2 pr-2" />  <!-- Hidden product -->
+            <span class="uppercase font-bold pr-2 text-red-500">Wanted:</span> <input type="checkbox" v-model="newProduct.wanted"  class="p-2 border rounded w-6 h-6 mr-2" /> <!-- Hidden product -->
           </div>
           <div class="p-2 border rounded flex items-center">
 
@@ -38,6 +37,11 @@
           <input type="text"  v-model="newProduct.imageURL" placeholder="Image URL" class="p-2 border rounded h-10" /> <!-- Image URL -->
 
         </div>
+        <div class="p-2 border rounded">
+            
+            <span class="uppercase font-bold">Ducks assassinated </span>
+            <input type="number" v-model=newProduct.ducksAssassinated   placeholder="0" class=" pl-2 " /> <!-- Product price -->
+          </div>
         <button type="submit" class="mt-4 bg-yellow-600 text-white p-2 rounded hover:bg-blue-700">Create</button>
       </form>
     </div>
@@ -72,11 +76,13 @@
             <span class="uppercase font-bold">Duck age: </span>
             <input type="text" v-model="product.age" placeholder="Price"  class=" p-2 border rounded " /> <!-- Product price -->
           </div>
-          
-          <div class="p-2 border rounded">
-
-            <span class="uppercase font-bold">Ducks birthday: </span>
-            <input type="text" v-model="product.birthday" placeholder="birthday" class=" pl-2 " /> <!-- Product stock -->
+           <div class="p-2 border rounded">
+            <span class="uppercase font-bold">Duck age: </span>
+            <input type="text" v-model="product.age" placeholder="Price"  class=" p-2 border rounded " /> <!-- Product price -->
+          </div>
+          <div class="p-2 border rounded flex items-center ">
+            <span class="uppercase font-bold pr-2 text-green-500">Not Wanted: </span> <input type="checkbox" v-model="product.notWanted"  class="p-2 border rounded w-6 h-6 mr-2 pr-2" />  <!-- Hidden product -->
+            <span class="uppercase font-bold pr-2 text-red-500">Wanted: </span> <input type="checkbox" v-model="product.wanted"  class="p-2 border rounded w-6 h-6 mr-2" /> <!-- Hidden product -->
           </div>
           <div class="p-2 border rounded flex items-center">
 
@@ -89,6 +95,11 @@
           <div class="p-2 border rounded flex items-center ">
             <span class="uppercase font-bold pr-2 text-green-500">Friendly: </span> <input type="checkbox" v-model="product.friendly"  class="p-2 border rounded w-6 h-6 mr-2 pr-2" />  <!-- Hidden product -->
             <span class="uppercase font-bold pr-2 text-red-500">Hostile: </span> <input type="checkbox" v-model="product.hostile"  class="p-2 border rounded w-6 h-6 mr-2" /> <!-- Hidden product -->
+          </div>
+          <div class="p-2 border rounded">
+            
+            <span class="uppercase font-bold">Ducks assassinated </span>
+            <input type="number" v-model=product.ducksAssassinated   placeholder="Age" class=" pl-2 " /> <!-- Product price -->
           </div>
           <input type="text" v-model="product.imageURL"  placeholder="Image URL" class="p-2 border rounded h-10" /> <!-- Image URL -->
           <span>
@@ -128,10 +139,12 @@ const newProduct = ref({
   agent: '',
   description: '',
   age: 0,
-  birthday: 0,
+  wanted: false,
+  notWanted: false,
   species: '',
   friendly: true,
   hostile: false,
+  ducksAssassinated: 0,
   isHidden: false,
   imageURL: '',
   _createdBy: ''

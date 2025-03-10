@@ -11,15 +11,26 @@
         <img  :src="product.imageURL" alt="Product Image" class="w-full h-48 object-cover mb-4 rounded-lg">      <!-- Product image -->
           <h3 class="text-lg text-gray-700 font-semibold mb-2"> {{ product.name }} </h3>                  <!-- Product name -->
           <p class="text-gray-700"> {{ product.description }}  </p>                                               <!-- Product description -->
-          <p class="text-gray-700 font-bold mt-2"><strong>Age:</strong> {{ product.age }} </p>                                <!-- Product price -->
-          <div class="flex justify-between mt-4">
-            <p class="text-gray-700 font-bold mt-2"><strong>Species:</strong> {{ product.species }} </p>                                <!-- Product price -->
+          <p class="text-gray-700 font-bold mt-2"><strong>Age:</strong> {{ product.age }} </p> 
+          <p class="text-gray-700 font-bold mt-2"><strong>Agent:</strong> {{ product.agent }} </p> 
+                                         <!-- Product price -->
+          <div class="flex justify-between mt-4 ">
+            <p class="text-gray-700 font-bold mt-2"><strong></strong> {{ product.species }} </p>                                <!-- Product price -->
             <p class="text-gray-700 font-bold mt-2">
-  <strong>Status:</strong> 
-  <span v-if="product.hostile" class="text-red-500 font-bold"> Hostile</span>
-  <span v-else class="text-green-500 font-bold"> Friendly</span>
-</p>          </div>
+
+</p>   
+
         </div> 
+        <div class="">
+<span v-if="product.hostile" class="text-red-500 font-bold"> Hostile</span>
+  <span v-else class="text-green-500 font-bold"> Friendly</span>
+ 
+  <span v-if="product.wanted" class="text-red-500 font-bold"> Wanted</span>
+  <span v-else class="text-green-500 font-bold"> Not wanted</span>  
+  <p class="text-gray-700 font-bold mt-2 text-red-500"><strong>ducks Assassinated:</strong> {{ product.ducksAssassinated }} </p>                                <!-- Product price -->
+</div>
+</div>
+
       </div>
 
     </div>

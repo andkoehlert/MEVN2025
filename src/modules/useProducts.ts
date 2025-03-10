@@ -54,14 +54,16 @@ if (!proDuck.name) {
 const setDefaultValues = (proDuck: newProDuck, userId: string) => {
   return {
     name: proDuck.name,
-    agent: proDuck.agent || 'Unknown',
+    agent: proDuck.agent || 'Agent Unknown',
     description: proDuck.description || 'New product description default value',
     imageURL: proDuck.imageURL || 'https://random-d.uk/api/v2/randomimg',
     age: proDuck.age || 2,
-    birthday: proDuck.birthday || 45,
-    species: proDuck.species || 'Unknown',
-    friendly: proDuck.friendly || true,
+    wanted: proDuck.wanted || false,
+    notWanted: proDuck.notWanted || false,
+    species: proDuck.species || 'Species Unknown',
+    friendly: proDuck.friendly || false,
     hostile: proDuck.hostile || false,
+    ducksAssassinated: proDuck.ducksAssassinated || 0,
     isHidden: proDuck.isHidden || false,
     _createdBy: userId
   }
@@ -73,7 +75,6 @@ const setDefaultValues = (proDuck: newProDuck, userId: string) => {
     const {token, userId} = getTokenAndUserId()
     validateProDuck(proDuck)
     const productWithDefaults = setDefaultValues(proDuck, userId)
-
       const response = await fetch('https://mongo-api-2025.onrender.com/api/products/', {
         method: 'POST',
         headers: {
@@ -97,6 +98,8 @@ const setDefaultValues = (proDuck: newProDuck, userId: string) => {
     }
   } 
 
+  // for online: https://mongo-api-2025.onrender.com/api/products/
+  // for local: http://localhost:4000/api/products/
 
   const deletedProDuckFromServer = async (id: string, token: string): Promise<void> => {
     const response = await fetch(`https://mongo-api-2025.onrender.com/api/products/${id}`, {

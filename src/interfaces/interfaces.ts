@@ -6,10 +6,12 @@ export type ProDuck = {
   description: string;
   imageURL: string;
   age: number;
-  birthday: number;
+  wanted: boolean;
+  notWanted: boolean;
   species: string;
   friendly: boolean;
   hostile: boolean;
+  ducksAssassinated: number;
   isHidden: boolean;
   _createdBy: string,
 }
